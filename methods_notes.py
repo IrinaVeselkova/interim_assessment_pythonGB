@@ -27,7 +27,7 @@ def add_note():
         key = ord(getch())
         if key == 27:
             break
-    note["id "] = id_note
+    note["id"] = id_note
     note["тема"] = theme_note
     datetime_note = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
     note["дата_и_время заметки"] = datetime_note
@@ -36,21 +36,39 @@ def add_note():
     with open(file_name, "a", encoding='utf-8') as notes_file:
         json.dump(note, notes_file,ensure_ascii=False)
         notes_file.write('\n')
+    print("\nЗаметка сохранена")
 
 # удаление заметки
 
 
 def remove_note():
-    pass
+    # search_note(search_in)
+    id_note = input("Введите id заметки, которую необходимо удалить: => ")
+    with open(file_name,"r",encoding="utf-8") as notes_file:
+        data=[json.loads(jline) for jline in notes_file]
+        data_new=[]
+        for v in data:
+            if id_note == v["id"]:
+                print("Заметка",id_note,"удалена")
+            else:
+                data_new.append(v)
+    if len(data)==len(data_new):
+        print("Указанный id не обнаружен. Поробуйте еще раз.")
+    else: 
+        with open(file_name,'w',encoding='utf-8') as record_file:
+            for d in data_new:
+                json.dump(d, record_file,ensure_ascii=False)
+                record_file.write('\n')
 # очищение файла
 
 
 def clear():
-    print('*'*20)
+    print('*'*60)
     answer = input("Вы уверены, что хотите удалить все заметки?(Д/Н) =>")
     if answer.lower() in ["y", 'yes', "да", "д"]:
-        open(file_name, 'w').close()
-        print('*'*20)
+        with open(file_name, 'w') as file:
+            file.close()
+        print('*'*60)
         print("Все заметки удалены")
 
 
@@ -64,12 +82,14 @@ def change_note():
 
 
 def search_note(search_in):
-    if search_in in ["None", '', " "]: show_notes()
+    if search_in in ["None", '', " "]: 
+        show_notes()
+        return
     with open(file_name,"r",encoding="utf-8") as notes_file:
         data=[json.loads(jline) for jline in notes_file]
         for v in data:
             for val in v.values():
-                if search_in in val or val in search_in:
+                if search_in.lower() in val.lower() or val.lower() in search_in.lower():
                     for key,value in v.items():
                         if key=="заметка":
                             print("*"*60)
@@ -93,8 +113,8 @@ def show_notes():
                     print(value.rstrip())        
                 else:            
                     print(f"{key}{" "*(30-len(key))} : {value.rstrip()}")    
-                    print()        
-            print('\n',"*"*60)             
+                           
+            print('\n',"*"*60,sep='')             
                     
                 
                     
@@ -102,3 +122,4 @@ def show_notes():
 
 # add_note()
 # search_note("23.03")
+#clear()

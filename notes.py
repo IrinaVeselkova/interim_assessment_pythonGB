@@ -9,10 +9,13 @@
 # последующим вводом данных, как-то ещё, на усмотрение студента
 
 from interface import interface
-from msvcrt import getch
 
-interface()
-key = 0
-while key != 27:
-    interface()
-    key = ord(getch())
+print('*'*60)
+print("Добро пожаловать в приложение 'Notes'!")
+print('*'*60)
+notes_do =True
+interface(notes_do)
+while notes_do:
+    interface(notes_do)
+    
+    
