@@ -8,60 +8,11 @@
 # (команда, данные), можно делать как запрос команды с консоли и
 # последующим вводом данных, как-то ещё, на усмотрение студента
 
-#сохранение заметки
-def add_note():
-    pass
-#Проверка данных
-def is_correct_input(data):
-    try:
-        if data.isdigit()==False:
-            raise TypeError('Неверно введен номер меню. Введите число от 1 до 6')
-        if int(data)<1 or int(data)>6:
-            raise ValueError('Неверно введен номер меню. Введите число от 1 до 6')
-        return True
-    except TypeError as err:
-        print(err)
-        return False
-    except ValueError as e:
-        print(e)
-        return False
+from interface import interface
+from msvcrt import getch
 
-# удаление заметки
-def remove_note():
-    pass
-# очищение файла
-def clear():
-    pass
-
-#изменение заметки
-def change_note():
-    pass
-
-# поиск заметки
-def search_note():
-    pass
-
-# показать все заметки
-def show_notes():
-    pass
-
-#интерфейс
-def interface():
-    #id заметки 
-    #тема заметки
-    #тело заметки
-    #дата/время создания или изменения заметки
-    print('*'*20)
-    print("Добро пожаловать в приложение 'Notes'!")
-    print('*'*20)
-    print(f"Выберите пункт меню:\n1. Добавить новую заметку\n2. Найти заметку\n3. Изменить заметку\n4. Показать все заметки\n5. Удалить заметку\n6. Удалить все заметки")
-    input_menu = 0
-    flag = False
-    while flag!=True:
-        input_menu=input("Выберите пункт меню: => ")
-        flag = is_correct_input(input_menu)
-    print(input_menu)        
-        
-    
-    
 interface()
+key = 0
+while key != 27:
+    interface()
+    key = ord(getch())
