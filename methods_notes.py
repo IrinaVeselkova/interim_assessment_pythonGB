@@ -19,7 +19,7 @@ def add_note():
         theme_note = theme_note[:21]
     if theme_note == "" or theme_note == None or theme_note == ' ':
         theme_note = "Тема отсутствует"
-    print("Текст заметки (после окончания воода нажмите ESC): => ")
+    print("Текст заметки (после окончания ввода нажмите ESC): => ")
     text_note = ''
     for line in sys.stdin:
         text_note = text_note+line
@@ -31,7 +31,7 @@ def add_note():
     note["date_time"] = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
     note["change_data_time"] = None
     note["text"] = text_note
-    with open("notes.json", "a", encoding='utf-16') as notes_file:
+    with open("notes.json", "a", encoding='utf-8') as notes_file:
         json.dump(note, notes_file, indent=3, separators=(';', ' : '),ensure_ascii=False)
 
 
@@ -41,10 +41,14 @@ def add_note():
 def remove_note():
     pass
 # очищение файла
-
-
 def clear():
-    pass
+    print('*'*20)
+    answer = input("Вы уверены, что хотите удалить все заметки?(Д/Н) =>")
+    if answer.lower() in ["y",'yes',"да","д"]:
+        open('notes.json', 'w').close()
+        print('*'*20)
+        print("Все заметки удалены")
+    
 
 # изменение заметки
 
@@ -65,4 +69,4 @@ def show_notes():
     pass
 
 
-add_note()
+clear()
