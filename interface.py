@@ -19,12 +19,12 @@ def interface():
     flag = False
     while flag != True:
         input_menu = input("Выберите пункт меню: => ")
-        flag = is_correct_input(input_menu)
+        flag = is_correct_input(input_menu,6)
 
     if input_menu == 1:
         add_note()
     elif input_menu == 2:
-        search_note()
+        interface_search()
     elif input_menu == 3:
         change_note()
     elif input_menu == 4:
@@ -33,3 +33,9 @@ def interface():
         remove_note()
     elif input_menu == 6:
         clear()
+
+def interface_search():
+    search_in = input("Введите данные для поиска: =>")
+    print("Вот что удалось найти: ")
+    search_note(search_in)
+    
