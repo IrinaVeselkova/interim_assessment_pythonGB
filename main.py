@@ -9,8 +9,8 @@
 # последующим вводом данных, как-то ещё, на усмотрение студента
 
 from interface import interface
-
-print('*'*60)
-print("Добро пожаловать в приложение 'Notes'!")
-print('*'*60,'\n',sep='')
-interface()
+if __name__ == '__main__':
+    print('*'*60)
+    print("Добро пожаловать в приложение 'Notes'!")
+    print('*'*60,'\n',sep='')
+    interface()

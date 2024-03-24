@@ -95,7 +95,7 @@ def change_note(file_name):
                     theme_note = theme_note[:31]
                 if theme_note == "" or theme_note is None or theme_note == ' ':
                     theme_note = v["тема"]
-                print("Текст заметки (после окончания ввода нажмите ESC): => ")
+                print("Текст заметки (после окончания ввода нажмите Enter и ESC): => ")
                 text_note = ''
                 for line in sys.stdin:
                     text_note = text_note+line
