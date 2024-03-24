@@ -7,14 +7,13 @@ from methods_notes import *
 def interface():
     go_notes = True
     while go_notes:
-        print("Выберите пункт меню:\n" +
-              "1. Добавить новую заметку\n" +
+        print("1. Добавить новую заметку\n" +
               "2. Найти заметку\n" +
               "3. Изменить заметку\n" +
               "4. Показать все заметки\n" +
               "5. Удалить заметку\n" +
               "6. Удалить все заметки\n" +
-              "7. Закрыть заметки")
+              "7. Закрыть заметки\n")
         input_menu = 0
         flag = False
         while flag != True:
@@ -35,16 +34,14 @@ def interface():
         elif int(input_menu) == 6:
             clear()
         elif int(input_menu) == 7:
-            print("Хорошего дня!")
+            print("До свидания! Хорошего дня!\n")
             go_notes = False
 
 
 def interface_search():
-    search_in = input("Введите данные для поиска: =>")
-    print("Вот что удалось найти: ")
+    search_in = input("Введите данные для поиска: => ")
+    print("Вот что удалось найти: \n")
     print("*"*60)
     search_note(search_in)
 
 
-def close():
-    return False

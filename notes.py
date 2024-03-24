@@ -12,6 +12,6 @@ from interface import interface
 
 print('*'*60)
 print("Добро пожаловать в приложение 'Notes'!")
-print('*'*60)
+print('*'*60\n)
 interface()
     
