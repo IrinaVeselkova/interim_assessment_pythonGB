@@ -13,9 +13,5 @@ from interface import interface
 print('*'*60)
 print("Добро пожаловать в приложение 'Notes'!")
 print('*'*60)
-notes_do =True
-interface(notes_do)
-while notes_do:
-    interface(notes_do)
-    
+interface()
     
